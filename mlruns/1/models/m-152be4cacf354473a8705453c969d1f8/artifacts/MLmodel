@@ -1,0 +1,23 @@
+artifact_path: file:C:/Users/Edu_K_61/Desktop/Projects/customer-churn-mlops/mlruns/1/models/m-152be4cacf354473a8705453c969d1f8/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.14.4
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.8.0
+    skops_trusted_types: null
+mlflow_version: 3.12.0
+model_id: m-152be4cacf354473a8705453c969d1f8
+model_size_bytes: 11953111
+model_uuid: m-152be4cacf354473a8705453c969d1f8
+prompts: null
+run_id: ac803cfd933c4d03a3d92888387f229c
+utc_time_created: '2026-05-12 10:47:21.148757'

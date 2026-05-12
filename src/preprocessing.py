@@ -1,51 +1,62 @@
+# Import libraries
 import pandas as pd
 
+# Sklearn utilities
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 
-# Load dataset
-df = pd.read_csv("data/customers.csv")
+# Function for preprocessing
+def load_and_preprocess_data():
 
-# Dataset info
-print(df.info())
+    # Load dataset
+    df = pd.read_csv("data/customers.csv")
 
-# Convert boolean columns into integers
-bool_cols = df.select_dtypes(include=["bool"]).columns
+    print(df.info())
 
-for col in bool_cols:
-    df[col] = df[col].astype(int)
+    # Drop customerID
+    df.drop("customerID", axis=1, inplace=True)
 
-# Identify categorical columns
-categorical_cols = df.select_dtypes(include=["object"]).columns
+    # Convert boolean columns into integers
+    bool_columns = df.select_dtypes(include='bool').columns
 
-print(categorical_cols)
+    for col in bool_columns:
+        df[col] = df[col].astype(int)
 
-# Label encoding
-encoder = LabelEncoder()
+    # Find categorical columns
+    categorical_columns = df.select_dtypes(include='object').columns
 
-for col in categorical_cols:
-    df[col] = encoder.fit_transform(df[col])
+    print(categorical_columns)
 
-# Verify transformed dataset
-print(df.info())
+    # Label Encoding
+    encoder = LabelEncoder()
 
-# Features and target
-X = df.drop("Churn", axis=1)
-y = df["Churn"]
+    for col in categorical_columns:
+        df[col] = encoder.fit_transform(df[col])
 
-# Train test split
-X_train, X_test, y_train, y_test = train_test_split(
-    X,
-    y,
-    test_size=0.2,
-    random_state=42
-)
+    print(df.info())
 
-# Shapes
-print(X_train.shape)
-print(X_test.shape)
+    # Features and target
+    X = df.drop("Churn", axis=1)
+    y = df["Churn"]
 
-# Save processed dataset
-df.to_csv("data/processed_customers.csv", index=False)
+    # Train-test split
+    X_train, X_test, y_train, y_test = train_test_split(
+        X,
+        y,
+        test_size=0.2,
+        random_state=42
+    )
 
-print("Processed dataset saved successfully")
+    print(X_train.shape)
+    print(X_test.shape)
+
+    print("Processed dataset saved successfully")
+
+    # Return processed data
+    return X_train, X_test, y_train, y_test
+
+
+# Run file directly
+if __name__ == "__main__":
+
+    load_and_preprocess_data()
