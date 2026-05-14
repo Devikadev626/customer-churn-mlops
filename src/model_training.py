@@ -35,7 +35,7 @@ for col in categorical_cols:
 
 
 # Features
-X = df.drop("Churn", axis=1)
+X = df.drop(["customerID", "Churn"], axis=1)
 
 # Target
 y = df["Churn"]
