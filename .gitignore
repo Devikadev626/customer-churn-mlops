@@ -1,4 +1,9 @@
 venv/
 __pycache__/
-.ipynb_checkpoints/
-*.pkl
+*.pyc
+
+mlruns/
+reports/
+reporting/
+
+.env

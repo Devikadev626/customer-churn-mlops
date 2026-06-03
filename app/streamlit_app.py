@@ -75,7 +75,7 @@ if st.button("Predict Churn"):
 
     # Send POST request to FastAPI
     response = requests.post(
-        "http://127.0.0.1:8000/predict",
+        "http://localhost:8000/predict",
         json=input_data
     )
 
