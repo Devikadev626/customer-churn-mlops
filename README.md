@@ -50,7 +50,22 @@ Customer churn is a major challenge for subscription-based businesses. This proj
 
 ## Project Architecture
 
-User Input → Streamlit UI → FastAPI API → Trained Model → Prediction Result
+```mermaid
+flowchart TD
+
+A[Customer Data]
+--> B[Data Preprocessing]
+
+B --> C[Random Forest Model]
+
+C --> D[MLflow Tracking]
+
+D --> E[SHAP Explainability]
+
+E --> F[FastAPI API]
+
+F --> G[Streamlit Dashboard]
+```
 
 
 
