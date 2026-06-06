@@ -67,6 +67,30 @@ E --> F[FastAPI API]
 F --> G[Streamlit Dashboard]
 ```
 
+## MLOps Workflow
+
+```mermaid
+flowchart LR
+
+A[Customer Dataset]
+--> B[Preprocessing]
+
+B --> C[Model Training]
+
+C --> D[Random Forest]
+
+D --> E[MLflow Tracking]
+
+D --> F[SHAP Explainability]
+
+D --> G[Model Serialization]
+
+G --> H[FastAPI Deployment]
+
+H --> I[Streamlit UI]
+
+I --> J[Customer Churn Prediction]
+```
 
 
 ## Features
